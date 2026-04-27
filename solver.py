@@ -45,14 +45,14 @@ def run_agent(
     for attempt in range(1, max_attempts + 1):
         print_attempt(attempt, max_attempts)
 
-        # Step 1: Generate or debug
+        
         if attempt == 1:
             response = llm_solve(problem, model)
         else:
             failures = [r for r in last_results if not r["passed"]]
             response = llm_debug(problem, code, failures, model)
 
-        # Step 2: Extract code block
+        
         new_code = extract_code(response)
         if not new_code:
             print_no_code_warning()
@@ -60,7 +60,7 @@ def run_agent(
             continue
         code = new_code
 
-        # Step 3: Run tests
+        
         results, all_passed = run_tests(code, test_cases)
         last_results = results
         print_test_results(results, attempt)
