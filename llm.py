@@ -3,7 +3,7 @@ from groq import Groq
 from agent.prompts import SOLVER_PROMPT, DEBUGGER_PROMPT, TEST_GENERATOR_PROMPT
 from utils.printer import print_solving, print_debugging
 
-client = Groq()  # reads GROQ_API_KEY from environment
+client = Groq()
 
 
 def _stream(messages: list[dict], model: str) -> str:
