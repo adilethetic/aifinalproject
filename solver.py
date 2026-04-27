@@ -15,27 +15,7 @@ def run_agent(
     max_attempts: int = 3,
     model: str = "llama-3.3-70b-versatile",
 ) -> dict:
-    """
-    Agentic CP solver loop:
-      1. Generate solution
-      2. Run test cases
-      3. If failures → send to debugger → fix → repeat
-      4. Stop when all pass or max_attempts reached
-
-    Args:
-        problem:      Full problem statement string
-        test_cases:   List of {"input": str, "expected": str} dicts
-        max_attempts: Max solve+debug cycles (default: 3)
-        model:        Groq model name
-
-    Returns:
-        {
-          "code":     str   — final code,
-          "passed":   bool  — whether all tests passed,
-          "attempts": int   — how many attempts it took,
-          "history":  list  — full log of every attempt,
-        }
-    """
+    
     print_header(model, max_attempts)
 
     code         = None
