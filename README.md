@@ -9,40 +9,40 @@ The agent uses 3 AI calls in a loop:
 ```
 Problem Statement
       ↓
-[Test Generator LLM] → auto-generates 5 test cases
+[Test Generator LLM] - auto-generates 5 test cases
       ↓
-[Solver LLM] → generates Python solution
+[Solver LLM] - generates Python solution
       ↓
-[Run Tests] → all pass? → ✅ Done
+[Run Tests] - all pass? → ✅ Done
       ↓ (some fail)
-[Debugger LLM] → sees failures, fixes code
+[Debugger LLM] - sees failures, fixes code
       ↓
-[Run Tests again] → repeat up to max_attempts
+[Run Tests again] - repeat up to max_attempts
 ```
 
 ## Project Structure
 
 ```
 aiprojectfinal/
-├── main.py              ← entry point (run this)
-├── requirements.txt     ← dependencies
-├── .env                 ← your API key (not uploaded)
+├── main.py              - entry point
+├── requirements.txt     - dependencies
+├── .env                 - API key
 ├── agent/
 │   ├── __init__.py
-│   ├── prompts.py       ← system prompts for each LLM role
-│   ├── llm.py           ← Groq API calls with streaming
-│   └── solver.py        ← main agentic loop
+│   ├── prompts.py       - system prompts for each LLM role
+│   ├── llm.py           - Groq API calls with streaming
+│   └── solver.py        - main agentic loop
 └── utils/
     ├── __init__.py
-    ├── executor.py      ← code extraction & subprocess execution
-    └── printer.py       ← terminal output helpers
+    ├── executor.py      - code extraction & subprocess execution
+    └── printer.py       - terminal output helpers
 ```
 
 ## Setup
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YOURUSERNAME/aiprojectfinal.git
+git clone https://github.com/adilethetic/aiprojectfinal.git
 cd aiprojectfinal
 ```
 
@@ -69,7 +69,7 @@ pip install -r requirements.txt
 
 ### 5. Create `.env` file
 ```
-GROQ_API_KEY=your_key_here
+GROQ_API_KEY= key
 ```
 
 ### 6. Run
