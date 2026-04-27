@@ -7,7 +7,7 @@ client = Groq()
 
 
 def _stream(messages: list[dict], model: str) -> str:
-    """Internal helper: stream a chat completion and return full response."""
+    
     response = []
     stream = client.chat.completions.create(
         model=model,
@@ -24,7 +24,7 @@ def _stream(messages: list[dict], model: str) -> str:
 
 
 def llm_solve(problem: str, model: str) -> str:
-    """Ask the LLM to solve a competitive programming problem."""
+    
     print_solving()
     return _stream(
         messages=[
@@ -36,7 +36,7 @@ def llm_solve(problem: str, model: str) -> str:
 
 
 def llm_debug(problem: str, code: str, failures: list[dict], model: str) -> str:
-    """Ask the LLM to debug and fix code given failed test cases."""
+    
     print_debugging()
 
     failure_text = ""
@@ -64,10 +64,7 @@ def llm_debug(problem: str, code: str, failures: list[dict], model: str) -> str:
 
 
 def llm_generate_tests(problem: str, model: str) -> list[dict]:
-    """
-    Ask the LLM to auto-generate test cases for the problem.
-    Returns a list of {"input": str, "expected": str} dicts.
-    """
+    
     print("\n[Agent] Auto-generating test cases...\n")
 
     response = client.chat.completions.create(
