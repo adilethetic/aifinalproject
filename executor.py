@@ -6,18 +6,12 @@ import os
 
 
 def extract_code(text: str) -> str | None:
-    """Extract the first ```python ... ``` block from LLM response."""
     match = re.search(r"```python\s*(.*?)```", text, re.DOTALL)
     return match.group(1).strip() if match else None
 
 
 def run_code(code: str, stdin_input: str = "", timeout: int = 10) -> dict:
-    """
-    Execute Python code in a subprocess with optional stdin.
-
-    Returns:
-        dict with keys: stdout, stderr, exit_code, timed_out
-    """
+   
     with tempfile.NamedTemporaryFile(mode="w", suffix=".py", delete=False) as f:
         f.write(code)
         path = f.name
@@ -48,16 +42,7 @@ def run_code(code: str, stdin_input: str = "", timeout: int = 10) -> dict:
 
 
 def run_tests(code: str, test_cases: list[dict]) -> tuple[list[dict], bool]:
-    """
-    Run code against all test cases.
-
-    Args:
-        code:       Python source code string
-        test_cases: List of {"input": str, "expected": str}
-
-    Returns:
-        (results, all_passed)
-    """
+    
     results = []
     for i, tc in enumerate(test_cases, 1):
         res      = run_code(code, stdin_input=tc.get("input", ""))
